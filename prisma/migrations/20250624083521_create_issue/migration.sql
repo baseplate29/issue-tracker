@@ -3,7 +3,7 @@ CREATE TYPE "Status" AS ENUM ('OPEN', 'IN_PROGRESS', 'CLOSED');
 
 -- CreateTable
 CREATE TABLE "Issue" (
-    "id" UUID NOT NULL,
+    "id" TEXT NOT NULL,
     "title" VARCHAR(255) NOT NULL,
     "description" TEXT NOT NULL,
     "status" "Status" NOT NULL DEFAULT 'OPEN',
