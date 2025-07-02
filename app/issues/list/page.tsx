@@ -21,9 +21,11 @@ const IssuesPage = async ({ searchParams }: Props) => {
     { label: 'Created', value: 'createdAt', className: 'hidden md:table-cell' },
   ];
 
-  const issues = await prisma.issue.findMany({
-    where: { status },
-  });
+  const orderBy = columns.map((column) => column.value).includes(params.orderBy)
+    ? { [params.orderBy]: 'asc' }
+    : undefined;
+
+  const issues = await prisma.issue.findMany({ where: { status }, orderBy });
 
   return (
     <div>
@@ -41,7 +43,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
                 >
                   {column.label}
                 </NextLink>
-                {column.value === params.orderBy && <ArrowUpIcon className='inline' />}
+                {column.value === params.orderBy && (
+                  <ArrowUpIcon className="inline" />
+                )}
               </Table.ColumnHeaderCell>
             ))}
           </Table.Row>
