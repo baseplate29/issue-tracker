@@ -4,6 +4,10 @@ import { prisma } from '@/prisma/client';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
+interface IssueRouteContext {
+  params: { id: string };
+}
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -42,11 +46,8 @@ export async function PATCH(
   return NextResponse.json(updatedIssue);
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Record<string, string> }
-) {
-  const { id } = params;
+export async function DELETE(request: NextRequest, context: IssueRouteContext) {
+  const { id } = context.params;
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({}, { status: 401 });
 
