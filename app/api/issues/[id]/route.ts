@@ -4,7 +4,7 @@ import { prisma } from '@/prisma/client';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
-interface IssueRouteContext {
+interface Params {
   params: { id: string };
 }
 
@@ -46,7 +46,7 @@ export async function PATCH(
   return NextResponse.json(updatedIssue);
 }
 
-export async function DELETE(request: NextRequest, context: IssueRouteContext) {
+export async function DELETE(request: NextRequest, context: Params) {
   const { id } = context.params;
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({}, { status: 401 });
