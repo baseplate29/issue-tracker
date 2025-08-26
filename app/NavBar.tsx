@@ -23,7 +23,7 @@ const NavBar = () => {
         <Flex justify="between">
           <Flex align="center" gap="3">
             <Link href="/">
-              <Image src="/bug-report.png" height={28} width={28} alt="logo" />
+              <Image src="/bug-report.webp" height={28} width={28} alt="logo" />
             </Link>
             <NavLinks />
           </Flex>
