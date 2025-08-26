@@ -4,7 +4,6 @@ import { Skeleton } from '@/app/components';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { FaBug } from 'react-icons/fa';
 import classNames from 'classnames';
 import { useSession } from 'next-auth/react';
 import {
@@ -15,6 +14,7 @@ import {
   Flex,
   Text,
 } from '@radix-ui/themes';
+import Image from 'next/image';
 
 const NavBar = () => {
   return (
@@ -23,7 +23,7 @@ const NavBar = () => {
         <Flex justify="between">
           <Flex align="center" gap="3">
             <Link href="/">
-              <FaBug />
+              <Image src="/bug-report.png" height={28} width={28} alt="logo" />
             </Link>
             <NavLinks />
           </Flex>
